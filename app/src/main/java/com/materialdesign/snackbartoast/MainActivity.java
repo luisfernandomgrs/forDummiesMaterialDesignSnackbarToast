@@ -1,18 +1,19 @@
 package com.materialdesign.snackbartoast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import static com.materialdesign.snackbartoast.R.color.teal_700;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-	private FloatingActionButton fabMessage;
+	private FloatingActionButton fabMessage, fabMessagePersonal;
 	private AlertDialog alertDialog;
 
 	@Override
@@ -36,6 +37,24 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onClick(View view) {
 						alertDialog.show();
+						snackbar.dismiss();
+					}
+				});
+				snackbar.show();
+			}
+		});
+
+		final View main_Activity = findViewById(R.id.activity_Main);
+
+		fabMessagePersonal = findViewById(R.id.fabMessagePersonal);
+		fabMessagePersonal.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Snackbar snackbar = Snackbar.make(view, "Message Information after event of FloatActionButton", Snackbar.LENGTH_LONG)
+						.setActionTextColor(getResources().getColor(R.color.yellow, null));
+				snackbar.setAction("Ok", new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
 						snackbar.dismiss();
 					}
 				});
